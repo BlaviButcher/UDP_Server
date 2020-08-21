@@ -23,12 +23,10 @@ public class TftpClient
             {
                 dataSend[i] = stringByteArray[i - 1];
             }
-
+            System.out.println("Hello World");
 
             DatagramPacket sentDP = new DatagramPacket(dataSend, dataSend.length, serverAddress, 8888);
             clientDS.send(sentDP);
-            //FileInputStream fis = new FileInputStream("cat.jpg");
-            byte[] buf = new byte[512];
         }
         catch(Exception e)
         {
