@@ -23,8 +23,6 @@ public class TftpClient
             {
                 dataSend[i] = stringByteArray[i - 1];
             }
-            String s = new String(dataSend);
-            System.out.println(s);
 
 
             DatagramPacket sentDP = new DatagramPacket(dataSend, dataSend.length, serverAddress, 8888);
