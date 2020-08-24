@@ -99,6 +99,7 @@ class TftpServerWorker implements Runnable
                 System.out.println("Requested file name:" + filename);
                 //if the file doesn't exist, send ERROR packet and close socket
                 if(!(new File(filename)).exists()) {
+                    System.out.println("error");
                     DatagramPacket errorDP = TftpUtil.packErrorPacket(filename);
                     errorDP.setSocketAddress(clientAddress);
                     sendfileSocket.send(errorDP);

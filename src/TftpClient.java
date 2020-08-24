@@ -10,27 +10,41 @@ public class TftpClient
 
     public static void main(String[] args)
     {
+        InetAddress address;
+        final int port = 8888;
+        DatagramSocket clientDS = null;
+        DatagramPacket packet;
+        byte[] receiveBuffer = new byte[512];
         try
         {
-            DatagramSocket clientDS = new DatagramSocket();
+            clientDS = new DatagramSocket();
             checkArgs(args);
             // Arrange server address to connect to
-            InetAddress serverAddress = InetAddress.getByName(args[0]);
+            address = InetAddress.getByName(args[0]);
             // file to be requested
             // Break into bytes
             byte[] stringByteArray = args[1].getBytes();
             // Create byte array of size stringarray + 1
-            byte[] dataSend = new byte[stringByteArray.length + 1];
+            byte[] sendBuffer = new byte[stringByteArray.length + 1];
             // Add RRQ to beginning of array
-            dataSend[0] = TftpUtil.RRQ;
+            sendBuffer[0] = TftpUtil.RRQ;
             // then copy stringarray over
-            for(int i = 1; i < dataSend.length; i++)
+            for(int i = 1; i < sendBuffer.length; i++)
             {
-                dataSend[i] = stringByteArray[i - 1];
+                sendBuffer[i] = stringByteArray[i - 1];
             }
             // Create packet to be sent
-            DatagramPacket sentDP = new DatagramPacket(dataSend, dataSend.length, serverAddress, 8888);
-            clientDS.send(sentDP);
+            packet = new DatagramPacket(sendBuffer, sendBuffer.length, address, port);
+            clientDS.send(packet);
+
+            packet = new DatagramPacket(receiveBuffer, receiveBuffer.length);
+            clientDS.receive(packet);
+            String received = new String(packet.getData(), 0, packet.getLength());
+            System.out.println(received);
+
+
+
+
         }
         catch(Exception e)
         {
