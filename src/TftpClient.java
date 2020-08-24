@@ -15,10 +15,10 @@ public class TftpClient
             DatagramSocket clientDS = new DatagramSocket();
             checkArgs(args);
             // Arrange server address to connect to
-            InetAddress serverAddress = InetAddress.getByName("192.168.1.66");
+            InetAddress serverAddress = InetAddress.getByName(args[0]);
             // file to be requested
             // Break into bytes
-            byte[] stringByteArray = "cat.jpg".getBytes();
+            byte[] stringByteArray = args[1].getBytes();
             // Create byte array of size stringarray + 1
             byte[] dataSend = new byte[stringByteArray.length + 1];
             // Add RRQ to beginning of array
