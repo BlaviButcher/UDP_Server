@@ -12,6 +12,7 @@ public class TftpClient
     private DatagramSocket clientDS = null;
     private DatagramPacket packet;
     private byte[] receiveBuffer = new byte[512];
+    private int block = 0;
 
     public void startClient(String[] args)
     {
@@ -23,11 +24,21 @@ public class TftpClient
             address = InetAddress.getByName(args[0]);
             sendRequest(args[1]);
 
-            packet = new DatagramPacket(receiveBuffer, receiveBuffer.length);
-            clientDS.receive(packet);
-            String received = new String(packet.getData(), 0, packet.getLength());
-            System.out.println(received);
+            while (true)
+            {
+                packet = new DatagramPacket(receiveBuffer, receiveBuffer.length);
+                clientDS.receive(packet);
+                String received = new String(packet.getData(), 0, packet.getLength());
+                if (isDATA(received))
+                {
+                    if(isExpectedBlock(received))
+                    {
+                        System.out.println(received.substring(2));
+                    }
+                }
 
+
+            }
         }
         catch(Exception e)
         {
@@ -40,7 +51,16 @@ public class TftpClient
         TftpClient tftpClient = new TftpClient();
         tftpClient.startClient(args);
     }
-
+    private boolean isExpectedBlock(String received)
+    {
+        byte[] receivedArray = received.getBytes();
+        return receivedArray[1] == block + 1 ? true : false;
+    }
+    private boolean isDATA(String received)
+    {
+        byte[] receivedArray = received.getBytes();
+        return receivedArray[0] == TftpUtil.DATA ? true : false;
+    }
     public void sendRequest(String filename) throws java.io.IOException
     {
         // file to be requested
