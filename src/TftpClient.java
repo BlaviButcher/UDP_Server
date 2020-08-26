@@ -24,21 +24,25 @@ public class TftpClient
             address = InetAddress.getByName(args[0]);
             sendRequest(args[1]);
 
-            while (true)
+
+            packet = new DatagramPacket(receiveBuffer, receiveBuffer.length);
+            clientDS.receive(packet);
+            String received = new String(packet.getData(), 0, packet.getLength());
+            if (isDATA(received))
             {
-                packet = new DatagramPacket(receiveBuffer, receiveBuffer.length);
-                clientDS.receive(packet);
-                String received = new String(packet.getData(), 0, packet.getLength());
-                if (isDATA(received))
+                if(isExpectedBlock(received))
                 {
-                    if(isExpectedBlock(received))
-                    {
-                        System.out.println(received.substring(2));
-                    }
+                    System.out.println(received.substring(1));
+                    block++;
+                    String reply = "1" + received.substring(2);
+                    System.out.println(reply);
+
+
                 }
-
-
             }
+
+
+
         }
         catch(Exception e)
         {
