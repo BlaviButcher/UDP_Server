@@ -131,9 +131,10 @@ class TftpServerWorker implements Runnable
                 break;
             }
             //send a file data packet
-            boolean successed = sendDataPacket(dataBuffer,rec);
+            boolean succeeded = sendDataPacket(dataBuffer,rec);
             //tried five times
-            if (!successed) {
+            if (!succeeded) {
+
                 System.out.println("Tried five times, give up");
                 break;
             }
