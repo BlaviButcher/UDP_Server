@@ -32,11 +32,18 @@ public class TftpClient
             {
                 if(isExpectedBlock(received))
                 {
-                    System.out.println(received.substring(1));
+                    System.out.println(received.substring(2));
                     block++;
                     String reply = "1" + received.substring(2);
-                    System.out.println(reply);
+                    byte[] sendBuffer = reply.getBytes();
+                    // Create packet to be sent
+                    packet = new DatagramPacket(sendBuffer, sendBuffer.length, address, port);
+                    clientDS.send(packet);
 
+                    packet = new DatagramPacket(receiveBuffer, receiveBuffer.length);
+                    clientDS.receive(packet);
+                    String received2 = new String(packet.getData(), 0, packet.getLength());
+                    System.out.println(received2);
 
                 }
             }
