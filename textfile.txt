@@ -1,1 +1,72 @@
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+A computer network is a group of computers that use a set of common communication protocols over digital interconnections
+for the purpose of sharing resources located on or provided by the network nodes. The interconnections between nodes are
+formed from a broad spectrum of telecommunication network technologies, based on physically wired, optical, and wireless
+radio-frequency methods that may be arranged in a variety of network topologies.
+
+The nodes of a computer network may be classified by many means as personal computers, servers, networking hardware,
+or general purpose hosts. They are identified by hostnames and network addresses. Hostnames serve as memorable labels
+for the nodes, rarely changed after initial assignment. Network addresses serve for locating and identifying the nodes
+by communication protocols such as the Internet Protocol.
+
+Computer networks may be classified by many criteria, for example, the transmission medium used to carry signals,
+bandwidth, communications protocols to organize network traffic, the network size, the topology, traffic control
+mechanism, and organizational intent.
+
+Computer networks support many applications and services, such as access to the World Wide Web, digital video,
+digital audio, shared use of application and storage servers, printers, and fax machines, and use of email and
+instant messaging applications.
+
+History
+
+Computer networking may be considered a branch of computer science, computer engineering, and telecommunications,
+since it relies on the theoretical and practical application of the related disciplines. Computer networking was
+influenced by a wide array of technology developments and historical milestones.
+
+    In the late 1950s, early networks of computers included the U.S. military radar system Semi-Automatic
+    Ground Environment (SAGE).
+    In 1959, Christopher Strachey filed a patent application for time-sharing and John McCarthy initiated the first
+    project to implement time-sharing of user programs at MIT.[1][2][3][4] Stratchey passed the concept on to J. C. R.
+    Licklider at the inaugural UNESCO Information Processing Conference in Paris that year.[5] McCarthy was instrumental
+    in the creation of three of the earliest time-sharing systems (Compatible Time-Sharing System in 1961, BBN
+    Time-Sharing System in 1962, and Dartmouth Time Sharing System in 1963).
+    In 1959, Anatolii Ivanovich Kitov proposed to the Central Committee of the Communist Party of the Soviet Union
+    a detailed plan for the re-organisation of the control of the Soviet armed forces and of the Soviet economy on the
+    basis of a network of computing centres, the OGAS.[6]
+    In 1959, the MOS transistor was invented by Mohamed Atalla and Dawon Kahng at Bell Labs.[7] It later became one of
+    the basic building blocks and "work horses" of virtually any element of communications infrastructure.[8]
+    In 1960, the commercial airline reservation system semi-automatic business research environment (SABRE) went online
+    with two connected mainframes.
+    In 1963, J. C. R. Licklider sent a memorandum to office colleagues discussing the concept of the "Intergalactic
+    Computer Network", a computer network intended to allow general communications among computer users.
+    Throughout the 1960s, Paul Baran and Donald Davies independently developed the concept of packet switching to
+    transfer information between computers over a network. Davies pioneered the implementation of the concept with the
+    NPL network, a local area network at the National Physical Laboratory (United Kingdom) using a line speed of 768
+    kbit/s.[9][10][11]
+    In 1965, Western Electric introduced the first widely used telephone switch that implemented computer control in
+    the switching fabric.
+    In 1969, the first four nodes of the ARPANET were connected using 50 kbit/s circuits between the University of
+    California at Los Angeles, the Stanford Research Institute, the University of California at Santa Barbara, and the
+    University of Utah.[12] In the 1970s, Leonard Kleinrock carried out mathematical work to model the performance of
+    packet-switched networks, which underpinned the development of the ARPANET.[13][14] His theoretical work on
+    hierarchical routing in the late 1970s with student Farouk Kamoun remains critical to the operation of the Internet
+    today.
+    In 1972, commercial services using X.25 were deployed, and later used as an underlying infrastructure for expanding
+    TCP/IP networks.
+    In 1973, the French CYCLADES network was the first to make the hosts responsible for the reliable delivery of data,
+    rather than this being a centralized service of the network itself.[15]
+    In 1973, Robert Metcalfe wrote a formal memo at Xerox PARC describing Ethernet, a networking system that was based
+    on the Aloha network, developed in the 1960s by Norman Abramson and colleagues at the University of Hawaii. In July
+    1976, Robert Metcalfe and David Boggs published their paper "Ethernet: Distributed Packet Switching for Local
+    Computer Networks"[16] and collaborated on several patents received in 1977 and 1978.
+    In 1974, Vint Cerf, Yogen Dalal, and Carl Sunshine published the Transmission Control Protocol (TCP) specification,
+    RFC 675, coining the term Internet as a shorthand for internetworking.[17]
+    In 1976, John Murphy of Datapoint Corporation created ARCNET, a token-passing network first used to share storage
+    devices.
+    In 1977, the first long-distance fiber network was deployed by GTE in Long Beach, California.
+    In 1977, Xerox Network Systems (XNS) was developed by Robert Metcalfe and Yogen Dalal at Xerox.[18]
+    In 1979, Robert Metcalfe pursued making Ethernet an open standard.[19]
+    In 1980, Ethernet was upgraded from the original 2.94 Mbit/s protocol to the 10 Mbit/s protocol, which was
+    developed by Ron Crane, Bob Garner, Roy Ogus,[20] and Yogen Dalal.[21]
+    In 1995, the transmission speed capacity for Ethernet increased from 10 Mbit/s to 100 Mbit/s. By 1998, Ethernet
+    supported transmission speeds of a Gigabit. Subsequently, higher speeds of up to 400 Gbit/s were added (as of 2018).
+    The scaling of Ethernet has been a contributing factor to its continued use.[19]
