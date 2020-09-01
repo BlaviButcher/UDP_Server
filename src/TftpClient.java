@@ -46,7 +46,7 @@ public class TftpClient
                     if (isExpectedBlock(received, block))
                     {
                         displayPacketContents(received);
-                        outputArray.write(packet.getData(), 2, packet.getLength() - 2);
+                        outputArray.write(received.getBytes(), 2, packet.getLength() - 2);
                         block++;
                         acknowledgePacket(block);
                         if (isLastPacket(received))
