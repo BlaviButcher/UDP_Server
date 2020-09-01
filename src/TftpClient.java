@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.*;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -14,7 +13,15 @@ public class TftpClient
     private DatagramSocket clientDS = null;
     private DatagramPacket packet;
     private byte[] receiveBuffer = new byte[512];
+    private ByteArrayOutputStream outputArray = new ByteArrayOutputStream();
+    private OutputStream outputStream;
 
+    public static void main(String[] args)
+    {
+        checkArgs(args);
+        TftpClient tftpClient = new TftpClient();
+        tftpClient.startClient(args);
+    }
 
     public void startClient(String[] args)
     {
@@ -27,6 +34,7 @@ public class TftpClient
             address = InetAddress.getByName(args[0]);
             // send RRQ
             sendRequest(args[1]);
+            getOutputFile(args[2]);
 
             while (true)
             {
@@ -38,9 +46,14 @@ public class TftpClient
                     if (isExpectedBlock(received, block))
                     {
                         displayPacketContents(received);
+                        outputArray.write(packet.getData(), 2, packet.getLength() - 2);
                         block++;
                         acknowledgePacket(block);
-                        if (isLastPacket(received)) break;
+                        if (isLastPacket(received))
+                        {
+                            outputArray.writeTo(outputStream);
+                            break;
+                        }
                     }
                     // retransmit ACK
                     else
@@ -61,11 +74,18 @@ public class TftpClient
             System.err.println(e);
         }
     }
-    public static void main(String[] args)
+
+    private void getOutputFile(String path)
     {
-        checkArgs(args);
-        TftpClient tftpClient = new TftpClient();
-        tftpClient.startClient(args);
+        try
+        {
+            outputStream = new FileOutputStream(path);
+        }
+        catch (FileNotFoundException e)
+        {
+            System.err.println("Output file not found or cannot be created. Exiting....");
+            System.exit(0);
+        }
     }
     private void displayPacketContents(String contents)
     {
@@ -110,7 +130,8 @@ public class TftpClient
     private boolean isLastPacket(String s)
     {
         // if length is less than max stored in packet
-        return (s.length() < 512);
+        byte[] array = s.getBytes();
+        return (array.length < 512);
     }
     // send RRQ
     public void sendRequest(String filename) throws java.io.IOException
@@ -136,7 +157,7 @@ public class TftpClient
     public static void checkArgs(String[] args)
     {
         // check correct # of args
-        if (args.length != 2)
+        if (args.length != 3)
         {
             System.out.println("Incorrect format - USAGE: TftpClient <ip> <filename>");
             System.exit(0);
