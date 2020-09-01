@@ -56,8 +56,8 @@ public class TftpServer {
     }
 
     private void checkArgs(String[] args){
-        if(args.length < 2) {
-            System.out.println("Usage: TftpServer <server_ip> <server_port>");
+        if(args.length <2) {
+            System.out.println("Usage: TftpServer server_ip server_port");
             System.exit(0);
         }
     }
@@ -90,7 +90,6 @@ class TftpServerWorker implements Runnable
         try{
             sendfileSocket = new DatagramSocket();
             System.out.println("TftpServer sending a file on port " + sendfileSocket.getLocalPort());
-            // gets the first byte of req packet (flag)
             byte pType = TftpUtil.checkPacketType(req);
             clientAddress = req.getSocketAddress();
             //checking if the first packet from client is a RRQ packet
@@ -99,7 +98,6 @@ class TftpServerWorker implements Runnable
                 System.out.println("Requested file name:" + filename);
                 //if the file doesn't exist, send ERROR packet and close socket
                 if(!(new File(filename)).exists()) {
-                    System.out.println("error");
                     DatagramPacket errorDP = TftpUtil.packErrorPacket(filename);
                     errorDP.setSocketAddress(clientAddress);
                     sendfileSocket.send(errorDP);
@@ -131,10 +129,9 @@ class TftpServerWorker implements Runnable
                 break;
             }
             //send a file data packet
-            boolean succeeded = sendDataPacket(dataBuffer,rec);
+            boolean successed = sendDataPacket(dataBuffer,rec);
             //tried five times
-            if (!succeeded) {
-
+            if (!successed) {
                 System.out.println("Tried five times, give up");
                 break;
             }
@@ -196,15 +193,10 @@ class TftpServerWorker implements Runnable
     }
 
     private  String getFileName(DatagramPacket dataDP){
-        // gets the buffer of dataDP
         byte[] data = dataDP.getData();
-        // get length
         int dataLength = dataDP.getLength();
-        // Creates bytebuffer that is empty with same capacity as dataDP
         ByteBuffer byteBuffer = ByteBuffer.allocate(dataLength-1);
         //remove the packet type (RRQ)
-        // transfers bytes into this buffer from data. offest so as to ignore the RRQ bit, number of bytes to read
-        // What remains should be the file name
         byteBuffer.put(data,1,dataLength-1);
         return new String(byteBuffer.array());
     }
